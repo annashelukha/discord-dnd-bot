@@ -35,6 +35,9 @@ var curLevel = 0;
 //links list (google as default link)
 var links = new Array("google.com");
 
+//kayla death counter
+var kayladeaths = 6549871
+
 //startup 
 client.once('ready', () => {
     //pull from save.txt in pi and parse
@@ -48,6 +51,7 @@ client.once('ready', () => {
     nextSession.setYear(tempSession.getFullYear());
     curLevel = data.curLevel_s;
     links = data.links_s;
+    kayladeaths = data.kayladeaths_s;
 
     //bot debug
     client.user.setActivity("?help");
@@ -150,7 +154,19 @@ client.on('message', message => {
         else
             message.channel.send('Current party level: ' + curLevel);
     }
-
+    
+    //return Kayla death counter
+    if (command == 'kayladeaths')
+    {
+        if(args.length != 0)
+        {
+            kayladeaths++;
+            message.channel.send('RIP Kayla\'s character :\(');
+        }
+        else
+            message.channel.send('Kayla has died ' + kayladeaths + ' times');
+    }
+    
     //split gold between players
     if (command == 'splitgold')
     {
@@ -217,7 +233,8 @@ client.on('message', message => {
         \n ?qualityquoteme: get a random message from the pinned messages in qualityquotes \
         \n ?currentlevel: get or set current level \n\t\t\t --set with \*currentlevel [#]\* \
         \n ?splitgold: split gold by the number of \*\*players\*\* receiving gold \n\t\t\t --\*splitgold [amount of gold] [number of players]\* \
-        \n ?links: get, add, or remove links from storage \n\t\t\t --set with \*links [link]\* \n\t\t\t --remove with \*links remove [link number]\*'
+        \n ?links: get, add, or remove links from storage \n\t\t\t --set with \*links [link]\* \n\t\t\t --remove with \*links remove [link number]\* \
+        \n ?kayladeaths: the amount of times Kayla has died \n\t\t\t --increase with \*kayladeaths +\*'
         );
     }
     
@@ -228,7 +245,8 @@ client.on('message', message => {
     {
         nextSession_s : nextSession,
         curLevel_s : curLevel,
-        links_s : links
+        links_s : links,
+        kayladeaths_s : kayladeaths
     }
     
     //reformat to a string

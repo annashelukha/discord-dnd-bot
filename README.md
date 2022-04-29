@@ -18,6 +18,9 @@ Current Commands:
     - Get: "?links"
     - Set: "?links [link]" 
     - Remove: "?links remove [list position]
+- Kayla Deaths: Amount of times Kayla's PC's have died
+    - Get: "?kayladeaths"
+    - Set: "?kayladeaths +" 
 - [Debug] Ping: Test command to test bot connectivity
     - Get: "?ping"
 
@@ -25,7 +28,13 @@ Current Commands:
 ---
 
 Changelog-
-Version 1.3 (latest)
+Version 1.4 (latest)
+- Added "kayladeaths" command
+    - Saves and retreives the amount of times Kayla's PC has died
+    - Get via "kayladeaths"
+    - Add one via "kayladeaths +"
+
+Version 1.3 
 - Added "links" command
     - Stores a list of links, accessible via their list position, with descriptions
     - View via "links"
